@@ -76,7 +76,7 @@
       <!-- server action to the one above -->
 
     <record model="ir.actions.server" id="productqview_action_server">
-      <field name="name">zadara_inventory server</field>
+      <field name="name">Products</field>
 
       <field name="model_id" ref="model_zadara_inventory_product"/>
       <field name="state">code</field>

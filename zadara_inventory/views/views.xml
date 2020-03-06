@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="zadara_inventory.list">
       <field name="name">zadara_inventory list</field>
       <field name="model">zadara_inventory.zadara_inventory</field>
@@ -13,19 +13,19 @@
         </tree>
       </field>
     </record>
--->
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="zadara_inventory.action_window">
       <field name="name">zadara_inventory window</field>
       <field name="res_model">zadara_inventory.zadara_inventory</field>
       <field name="view_mode">tree,form</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="zadara_inventory.action_server">
       <field name="name">zadara_inventory server</field>
       <field name="model_id" ref="model_zadara_inventory_zadara_inventory"/>
@@ -38,7 +38,7 @@
         }
       </field>
     </record>
--->
+
 
     <!-- Top menu item -->
 <!--

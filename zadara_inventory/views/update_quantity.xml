@@ -1,0 +1,122 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="update_quantity_list">
+      <field name="name">Update Quantity</field>
+      <field name="model">zadara_inventory.update_quantity</field>
+      <field name="arch" type="xml">
+        <tree>
+          
+          <field name="location_id"/>
+          <field name="product_name"/>
+              <field name="p_tag"/>
+            <field name="update_date" string="date"/>
+            <field name="serial_number"/>
+            <field name="quantity" string="Quantity"/>
+         
+        </tree>           
+      </field>
+    </record>
+     
+      
+ 
+      
+      
+                <record model="ir.ui.view" id="update_qunantity_form_list">
+      <field name="name">Update Quantity</field>
+      <field name="model">zadara_inventory.update_quantity</field>
+      <field name="arch" type="xml">
+        <form>
+            <group colspan='2'>
+        
+            <group colspan='1' col='1'>
+                     <field name="location_id" string="Location"/>
+                     <field name="product_id" string="Product Name"/>
+                    <field name="product_number" string="Product Number"/>
+
+                    <field name="serial_number" string="Serial Number"/>
+                </group>
+                <group colspan='1' col='1'>       
+                <field name="quantity" string="Quantity"/>
+                <field name="responsible_party" string="Responsible Party"/>
+            <field name="update_date" string="Date"/>
+                 <field name="p_tag"/>
+                </group>
+          
+               
+            </group>
+        </form>
+      </field>
+    </record>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <!--
+    <record model="ir.ui.view" id="update_quantity_form">
+      <field name="name">product list</field>
+      <field name="model">zadara_inventory.update_quantity</field>
+      <field name="arch" type="xml">
+        <form>
+          
+          <field name="location_id"/>
+          <field name="product_name"/>
+            <field name="update_date" string="date"/>
+            <field name="serial_number"/>
+            <field name="t_quantity" string="Quantity"/>
+        </form>           
+      </field>
+    </record>-->
+    <!--
+      <record id="update_quantity_filter" model="ir.ui.view">
+          <field name="name">search</field>
+        <field name="model">zadara_inventory.update_quantity</field>
+        <field name="arch" type="xml">
+            <search string="by move">
+                <field name="update_date"/>  
+                <group expand="0" string="Group By">
+                    <filter string="Date Order" name="bydate" context="{'group_by':'update_date:minute'}"/> 
+                </group>
+            </search>
+        </field>
+    </record>
+-->
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="update_quantity_action_window">
+      <field name="name">update qunatity window</field>
+      <field name="res_model">zadara_inventory.update_quantity</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+    <!-- server action to the one above -->
+
+   
+
+    <!-- Top menu item -->
+
+   
+
+  </data>
+</odoo>

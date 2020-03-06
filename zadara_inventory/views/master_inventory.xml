@@ -77,7 +77,7 @@ action = env['zadara_inventory.master_inventory'].search([]).action_()
     </record>
       -->
     <record model="ir.actions.act_window" id="zadara_inventory_master_inventory">
-      <field name="name">master_inventory window</field>
+      <field name="name">Master Inventory</field>
       <field name="res_model">zadara_inventory.master_inventory</field>
       <field name="view_mode">tree,form,kanban</field>
     </record>

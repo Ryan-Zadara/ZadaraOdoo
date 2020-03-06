@@ -55,7 +55,7 @@
     <!-- actions opening views on models-->
 
     <record model="ir.actions.act_window" id="zadara_inventory_product_history">
-      <field name="name">lwindow</field>
+      <field name="name">Product History</field>
       <field name="res_model">zadara_inventory.product_history</field>
       <field name="view_mode">tree,form</field> 
     <field name="view_id" ref="product_history_list"/>

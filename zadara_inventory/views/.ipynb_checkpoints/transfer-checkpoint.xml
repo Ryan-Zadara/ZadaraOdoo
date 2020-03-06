@@ -61,7 +61,7 @@
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="transfer_action_window">
-      <field name="name">transfer window</field>
+      <field name="name">Transfers</field>
       <field name="res_model">zadara_inventory.transfer</field>
       <field name="view_mode">tree,form</field>
     </record>

@@ -47,7 +47,7 @@ class transfer(models.Model):
    
     #check valid, location_id, product_id 
 
-    '''
+
     def check_create_all(self,q):
         if q != 1:
             raise UserError("bad quantity")
@@ -242,4 +242,4 @@ class transfer(models.Model):
                  #   val['transfer_source_quant'] =#
                  
                  
-                 '''
+

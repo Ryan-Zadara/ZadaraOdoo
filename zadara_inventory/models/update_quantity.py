@@ -74,8 +74,7 @@ class update_quantity(models.Model):
     def pre_checks(self,q):
         if q < 0:
             raise UserError("quantitys cannot be negetive")
-        
-    '''
+
     @api.model_create_multi
     def create(self,vals_list):
         for val in vals_list:
@@ -187,5 +186,4 @@ class update_quantity(models.Model):
     #create
     
     
-    
-    '''
+

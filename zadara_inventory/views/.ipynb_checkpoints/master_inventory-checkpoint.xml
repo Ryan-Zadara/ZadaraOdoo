@@ -10,7 +10,7 @@
          
                       
       
-          <tree string="mi_tree"  >
+          <tree string="mi_tree"  create='false'>
           <!-- <button name="launch_session_wizard" type="object"
                 string="Subscribe" class="btn-primary"/>-->
     

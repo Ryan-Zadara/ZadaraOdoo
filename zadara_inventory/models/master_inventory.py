@@ -22,6 +22,8 @@ class master_inventory(models.Model):
     
     location_id = fields.Many2one('zadara_inventory.locations')                             
     
+    location_id_type = fields.Selection(related="location_id.location_type")
+    
     serial_number = fields.Char()
     #inv_product_sn = fields.Many2one('zadara_inventory.serialnumbers')#compute="compute_sn")#compute="compute_sn", inverse="inv_compute_sn")
     

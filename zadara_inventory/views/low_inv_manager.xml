@@ -1,0 +1,38 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="low_inv_manager_list">
+      <field name="name">locations list</field>
+      <field name="model">zadara_inventory.low_inv_manager</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="product_id"/>
+          <field name="quantity"/>
+          <field name="sent"/>
+        <field name="date_"/>
+
+
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="zadara_inventory_low_inv_manager">
+      <field name="name">Locations</field>
+      <field name="res_model">zadara_inventory.low_inv_manager</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+   
+
+    <!-- Top menu item -->
+
+   
+  </data>
+</odoo>

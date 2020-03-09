@@ -17,11 +17,13 @@
                 string="Subscribe" class="btn-primary"/>-->
     
             <field name="product_id"/>
+              <field name="quantity"/>
             <!--  <field name="product_name"/>-->
             <field name="p_tag"/>
           <field name="serial_number"/>
           <field name="location_id"/> 
-            <field name="quantity"/>
+              <field name="location_id_type" invisible='1'/> 
+           
          <field name="report_q_mi" invisible='1'/>
              
                      <field name="product_number"/>

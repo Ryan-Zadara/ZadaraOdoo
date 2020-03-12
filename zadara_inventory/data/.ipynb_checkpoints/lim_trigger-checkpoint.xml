@@ -1,0 +1,36 @@
+<odoo>
+<data >
+   
+        <record id="cron_do_stuff" model="ir.cron">
+            <field name="name">min Trigger</field>
+             <field name="user_id" ref="base.g"/>
+              
+            
+            <field eval="True" name="active"/>
+            <field name="interval_number">2</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+  
+             <field eval="False" name="doall"/>
+   
+               <field name="model_id" ref="model_zadara_inventory_low_inv_manager"/>
+                <field name="code">
+action = env['zadara_inventory.low_inv_manager'].search([]).do_stuff()
+            </field>
+
+           <!--   <field eval="'do_stuff'" name="function"/>
+          <field name="args" eva(None,)'" />-->
+            <field name="priority">10</field>
+        </record>
+      
+      
+      
+    <!-- server action to the one above -->
+
+   
+
+    <!-- Top menu item -->
+
+   
+    </data>
+</odoo>

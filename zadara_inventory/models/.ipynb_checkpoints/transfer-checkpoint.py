@@ -29,7 +29,7 @@ class transfer(models.Model):
     
     serial_number = fields.Char(required=True)
     
-    quantity = fields.Integer(required=True)
+    quantity = fields.Integer(required=True, default='1')
     
     t_quantity = fields.Integer()
     
@@ -46,6 +46,7 @@ class transfer(models.Model):
     #p_tag = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete')])
    
     #check valid, location_id, product_id 
+
 
     def check_create_all(self,q):
         if q != 1:
@@ -134,8 +135,8 @@ class transfer(models.Model):
                 if not self.p_tag.p_tag_type == 'Obsolete' or not self.p_tag.p_tag_type == 'Broken No Warranty':
                     if self.env['zadara_inventory.locations'].search([['id','=',val.get('source_location_id')]]).location_type == 'Customer':
                         val['p_tag'] = self.env['zadara_inventory.p_tag'].search([['name','=','Used']]).id
-        
-            
+            #if val.get('source_location_id') == 'Zadara Storage Inc. Irvine':
+              #  self.env['zadara_inventory.low_mi_manager'].check_min(val.get('product_id'), )
         res = super(transfer, self).create(vals_list)
         for vals in vals_list:
            # if self.env['zadara_inventory.product'].search([['id','=',vals.get("product_id")],['product_trackSerialNumber','=',True]]) and vals['transfer_tag'] == 'write':

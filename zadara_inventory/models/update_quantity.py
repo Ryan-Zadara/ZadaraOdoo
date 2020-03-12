@@ -20,7 +20,7 @@ class update_quantity(models.Model):
     
     serial_number = fields.Char()
     #p_tag = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete')], default='New')
-    quantity = fields.Integer()
+    quantity = fields.Integer(required=True, default='1')
     product_number = fields.Many2one('zadara_inventory.product_number')
     
     responsible_party = fields.Selection([('Irvine','Irvine'), ('Yokneam','Yokneam')])
@@ -114,7 +114,7 @@ class update_quantity(models.Model):
                     
                     
              
-                
+               
           
         res = super(update_quantity, self).create(vals_list)
         for vals in vals_list:

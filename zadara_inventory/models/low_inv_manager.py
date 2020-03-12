@@ -16,14 +16,26 @@ class low_inv_manager(models.Model):
     
     date_ = fields.Datetime(Default = datetime.now())
     
+    @api.model
+    def do_stuff(self):
+        raise UserError(datetime.now())
     
-    
-    def check_min(self, p_id,quant):
-        t = self.env['zadara_inventory.min_inventory'].search([['product_id','=',self.p_id],['min_inv','>=',quant]])
+   # def check_min(self, p_id,quant):
         
+    #    t = self.env['zadara_inventory.min_inventory'].search([['product_id','=',p_id],['min_inv','>=',quant]])
+     #   
+      #  if t:
+       #     if not self.env['zadara_inventory.low_inv_manager'].search([['product_id','=',p_id],['sent','=',False]]):
+        #        vals_list = {'product_id': p_id, 'quantity': quant , 'sent':False, 'date_':datetime.now()}
+         #       self.env['zadara_inventory.low_inv_manager'].create(vals_list)
+                
         
-        
-    
+    @api.model
+    def create(self,vals_list):
+        raise UserError(self.env['zadara_inventory.low_inv_manager'].id())
+        res = super(low_inv_manager, self).create(vals_list)
+        return res
+
     
     
     

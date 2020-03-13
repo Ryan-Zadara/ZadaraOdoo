@@ -13,7 +13,7 @@ class master_inventory(models.Model):
 
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
 
-    product_id = fields.Many2one('zadara_inventory.product')
+    product_id = fields.Many2one('zadara_inventory.product', string="1-Product")
 
     #product_name = fields.Char(compute="set_name",store=True)
 

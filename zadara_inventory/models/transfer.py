@@ -76,6 +76,8 @@ class transfer(models.Model):
             #    raise UserError("no product")
             #if val.get('reponsible_party') == '':
             #    raise UserError("no responsible party")
+            if val.get("p_tag") == False:
+                del val['p_tag']
             if val.get('source_location_id') == val.get("destination_location_id"):
                
                 raise UserError("source and destination location must be different")

@@ -43,6 +43,7 @@
         'views/product_number.xml',
         'views/vendors.xml',
         'wizard/inv_report_calc.xml',
+         'wizard/inv_repo_two.xml',
         'wizard/q_mi.xml',
         'views/update_quantity.xml',
         'views/transfer.xml',

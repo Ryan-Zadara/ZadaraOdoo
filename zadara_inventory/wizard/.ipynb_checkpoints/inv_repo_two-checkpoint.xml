@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="zadara_inventory_inv_repo_two" model="ir.ui.view">
+        <field name="name">Inventory Report at Date</field>
+        <field name="model">zadara_inventory.inv_repo_two</field>
+        <field name="arch" type="xml">
+            <form string="Choose your date">
+                <group>
+                    <field name='by_product'/>
+                    <field name="inv_at_date"/>
+                    
+                </group>
+                <footer>
+                    <button name="calc_at_date" string="Confirm" type="object" class="btn-primary"/>
+           
+                </footer>
+            </form>
+        </field>
+    </record>
+    
+       <act_window id="launch_session_wizar"
+                    name="Inv At Date"
+                   binding_model = 'zadara_inventory.master_inventory'
+                    res_model="zadara_inventory.inv_repo_two"
+                    view_mode="form"
+                    target="new"/>
+
+</odoo>

@@ -70,8 +70,11 @@ class product_history(models.Model):
           #      del vals_list['serial_number']
             #raise UserError("asdkjf;a")
         mi = mi.id
-        date__ = datetime.now()
-        vals_list.update({'date_':date__})
+        #date__ = datetime.now()
+        #vals_list.update({'date_':date__})
+        if vals_list.get('date_') == False or vals_list.get('date_') == None:
+            raise UserError('bad date')
+        #raise UserError(vals_list.get('date_'))
         vals_list.update({'mi_id':mi})
         res = super(product_history, self).create(vals_list)
         return res

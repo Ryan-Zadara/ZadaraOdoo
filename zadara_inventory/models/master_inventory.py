@@ -56,9 +56,15 @@ class master_inventory(models.Model):
       #  return 1
     @api.model
     def create(self,vals_list):
+
+        d = 1
+        if vals_list.get('date_'):
+            d = vals_list['date_']
+            del vals_list['date_']
   
         res = super(master_inventory, self).create(vals_list)
-        
+        if not d == 1:
+            vals_list['date_'] = d
         #self.env['zadara_inventory.product_history'].create(vals_list)
         
         #f = self.env['zadara_inventory.product']
@@ -91,9 +97,14 @@ class master_inventory(models.Model):
                          
     def write(self,vals_list):
         x = self
+        d = 1
+        if vals_list.get('date_'):
+            d = vals_list['date_']
+            del vals_list['date_']
         #raise UserError(vals_list.get('location_id'))
         res = super(master_inventory, self).write(vals_list)
-        
+        if not d == 1:
+            vals_list['date_'] = d
        # if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
         #    self.write({'location_id.id': vals_list.get('location_id')})
 

@@ -53,7 +53,7 @@ class inv_repo_two(models.TransientModel):
                     #all = all | temp
                 else:
                     self.p_tag = x.p_tag.id
-                dic = [{'product_id':self.product_id,'p_tag':self.p_tag,'location_id':self. location_id,'serial_number':x.serial_number,'quantity':x.quantity,'product_number':self.product_number,'report_q_mi':x.report_q_mi}]
+                dic = [{'product_id':self.product_id,'p_tag':self.p_tag,'location_id':self. location_id,'serial_number':self.serial_number,'quantity':self.quantity,'product_number':self.product_number,'report_q_mi':self.report_q_mi}]
                 self.env['zadara_inventory.m_inv_copy'].create(dic)
               #  l = self.env['zadara_inventory.m_inv_copy'].search([])
               #  raise UserError(l)

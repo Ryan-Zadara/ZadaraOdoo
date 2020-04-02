@@ -32,6 +32,7 @@
         'views/min_inventory.xml',
         'views/views.xml',
         'views/low_inv_manager.xml',
+        'views/m_inv_copy.xml',
         #'data/lim_trigger.xml',
          'views/p_tag.xml',
         'views/location.xml',

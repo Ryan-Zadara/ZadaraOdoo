@@ -21,9 +21,9 @@ class inv_repo_two(models.TransientModel):
     def calc_at_date(self):
         #if self.locations == None:
             #location_id = self.env['zadara_inventory.product_history'].get.context('product_history')
-        
+        self.env['zadara_inventory.m_inv_copy'].reset_copy()
      #   products = self.env['zadara_inventory.product'].search([])
-        all = self.env['zadara_inventory.master_inventory']
+        all = self.env['zadara_inventory.m_inv_copy']
        # for_search  = self.env['zadara_inventory.product_history'].search([])
         mi_t = self.env['zadara_inventory.master_inventory'].search([])
         #mi_ph =  self.env['zadara_inventory.product_history'].search([])
@@ -40,13 +40,27 @@ class inv_repo_two(models.TransientModel):
             if not updates:
                 updates = self.env['zadara_inventory.update_quantity'].search((['update_date','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number]),order="update_date desc", limit=1)
             if updates:
-                temp = x 
-                temp.report_q_mi = updates.t_quantity
-                temp.location_id = updates.location_id
-                if not updates.p_tag == False:
-                    temp.p_tag = updates.p_tag
+                self.product_id = x.product_id.id
+                self.serial_number = x.serial_number
+                self.quantity = x.quantity
+                self.report_q_mi = updates.t_quantity
+                self.location_id = updates.location_id.id
+                self.product_number = x.product_number.id
+                #raise UserError(updates)
+                if not updates.p_tag == None:
+                    self.p_tag = updates.p_tag.id
                     r = r + 1
-                    all = all | temp
+                    #all = all | temp
+                else:
+                    self.p_tag = x.p_tag.id
+                dic = [{'product_id':self.product_id,'p_tag':self.p_tag,'location_id':self. location_id,'serial_number':x.serial_number,'quantity':x.quantity,'product_number':self.product_number,'report_q_mi':x.report_q_mi}]
+                self.env['zadara_inventory.m_inv_copy'].create(dic)
+              #  l = self.env['zadara_inventory.m_inv_copy'].search([])
+              #  raise UserError(l)
+        for x in self.env['zadara_inventory.m_inv_copy'].search([]):
+          #  raise UserError(x)
+            all = all | x
+                  #  raise UserError(all)
        # raise UserError(r)
         #raise UserError(all)
     
@@ -160,7 +174,7 @@ class inv_repo_two(models.TransientModel):
             #'views': [(tree_view_id, 'tree'), (form_view_id, 'form')],
             'view_mode': 'tree',
             'name': 'Products',
-            'res_model': 'zadara_inventory.master_inventory',
+            'res_model': 'zadara_inventory.m_inv_copy',
 
             'domain': [['id','in',all.ids]],
         }

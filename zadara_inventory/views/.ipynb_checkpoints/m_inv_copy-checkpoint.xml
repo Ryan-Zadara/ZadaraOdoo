@@ -1,0 +1,94 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="m_inv_copy_list">
+      <field name="name">Master Inventory</field>
+      <field name="model">zadara_inventory.m_inv_copy</field>
+      <field name="arch" type="xml">
+          
+         
+                      
+      
+
+          <tree string="mi_tree"  create='false'>
+
+          <!-- <button name="launch_session_wizard" type="object"
+                string="Subscribe" class="btn-primary"/>-->
+    
+            <field name="product_id"/>
+              <field name="quantity"/>
+            <!--  <field name="product_name"/>-->
+            <field name="p_tag"/>
+          <field name="serial_number"/>
+          <field name="location_id"/> 
+              <field name="location_id_type" invisible='1'/> 
+           
+         <field name="report_q_mi" invisible='1'/>
+             
+                     <field name="product_number"/>
+        </tree>    
+      </field>
+    </record>
+
+      
+      <!--
+            <record model="ir.ui.view" id="master_inventory_kanban">
+      <field name="name">Master Inventory</field>
+      <field name="model">zadara_inventory.master_inventory</field>
+      <field name="arch" type="xml">
+          <kanban>                
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="serial_number"/>
+                <field name="quantity"/>
+                              
+
+              <templates>
+                 
+              <t t-name="kanban-box">
+                  <div class="oe_kanban_details">
+                      <strong class='o_kanban_record_title'><field name="product_id"/></strong>
+              <div class='o_kanban_tags_section'>
+                  <ul>
+                      <li>Product Name: <field name="product_id"/> </li>
+                      <li>Quantity <field name="quantity"/> </li>
+                      <li>Location: <field name="location_id"/> </li>
+                  </ul>
+
+              </div>
+                  </div>
+              </t>
+                  </templates>
+          </kanban>
+          </field>
+          </record>
+-->
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.server" id="zadara_inventory_master_inventory">
+      <field name="name">zadara_inventory server</field>
+
+      <field name="model_id" ref="model_zadara_inventory_master_inventory"/>
+      <field name="state">code</field>
+      <field name="code">
+action = env['zadara_inventory.master_inventory'].search([]).action_()
+
+ 
+      </field>
+    </record>
+      -->
+    <record model="ir.actions.act_window" id="zadara_inventory_m_inv_copy">
+      <field name="name">Master Inventory</field>
+      <field name="res_model">zadara_inventory.m_inv_copy</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+   
+
+  
+  </data>
+</odoo>

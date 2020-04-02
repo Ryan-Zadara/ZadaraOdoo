@@ -208,8 +208,8 @@ class transfer(models.Model):
         #raise UserError(mi.product_id)
         del vals_list['source_location_id']#if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
         mi.write(vals_list)
-        if vals_list.get('p_tag'):
-            del vals_list['p_tag']
+        ##if vals_list.get('p_tag'):
+         #   del vals_list['p_tag']
        
         
         self.env['zadara_inventory.product_history'].recurcreate(vals_list)
@@ -230,8 +230,8 @@ class transfer(models.Model):
         del vals_list['source_location_id']#if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
         mi.write(vals_list)
        # raise UserError("hi")
-        if vals_list.get('p_tag'):
-            del vals_list['p_tag']
+        #if vals_list.get('p_tag'):
+         #   del vals_list['p_tag']
        
        # raise UserError(vals_list.get('date_'))
             

@@ -18,6 +18,7 @@
            <field name="location_id"/>
            <field name="quantity" />
             <field name="t_quantity" string="Total Quantity" />
+            <field name="p_tag" string="Product Tag"/>
         <!--
            <button name="launch_session_wizard" type="object"
                 string="Subscribe"/>

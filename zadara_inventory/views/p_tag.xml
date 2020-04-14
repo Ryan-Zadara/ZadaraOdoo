@@ -3,7 +3,7 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="p_tag_list">
-      <field name="name">lp_taglist</field>
+      <field name="name">Product Tag list</field>
       <field name="model">zadara_inventory.p_tag</field>
       <field name="arch" type="xml">
         <tree>
@@ -18,7 +18,7 @@
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="zadara_inventory_p_tag">
-      <field name="name">p_tag window</field>
+      <field name="name">Product Tag window</field>
       <field name="res_model">zadara_inventory.p_tag</field>
       <field name="view_mode">tree,form</field>
     </record>

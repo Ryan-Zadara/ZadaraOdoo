@@ -32,7 +32,17 @@ class inv_report_calc(models.TransientModel):
         r = 0
         
         for x in mi_t:
-            updates = self.env['zadara_inventory.product_history'].search((['date_','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number]),order="date_ desc", limit=1)
+            updates = self.env['zadara_inventory.product_history'].search((['date_','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number],['location_id.id','=',x.location_id.id]),order="date_ desc", limit=2)
+            if len(updates) > 1:
+                if updates[0].date_ == updates[1].date_:
+                    if updates[0].id > updates[1].id:
+                        updates = updates[0]
+                    else:
+                        updates = updates[1]
+                elif updates[0].date_ > updates[1].date_:
+                    updates = updates[0]
+                else:
+                    updates = updates[1]
             r = r + 1
             all = all | updates
        # raise UserError(r)

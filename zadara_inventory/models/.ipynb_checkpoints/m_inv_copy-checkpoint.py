@@ -3,8 +3,8 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError , UserError
 
-class master_inventory(models.Model):
-    _name = 'zadara_inventory.master_inventory'
+class m_inv_copy(models.Model):
+    _name = 'zadara_inventory.m_inv_copy'
     _description = 'zadara_inventory.master_inventory'
    # name = fields.Char()
     
@@ -54,17 +54,18 @@ class master_inventory(models.Model):
         
         #    i = i + x.quantity
       #  return 1
+    
+    
+    def reset_copy(self):
+        x = self.env['zadara_inventory.m_inv_copy'].search([])
+        x.unlink()
+        #self.env['zadara_inventory.master_inventory']
+        
     @api.model
     def create(self,vals_list):
-
-        d = 1
-        if vals_list.get('date_'):
-            d = vals_list['date_']
-            del vals_list['date_']
   
-        res = super(master_inventory, self).create(vals_list)
-        if not d == 1:
-            vals_list['date_'] = d
+        res = super(m_inv_copy, self).create(vals_list)
+        
         #self.env['zadara_inventory.product_history'].create(vals_list)
         
         #f = self.env['zadara_inventory.product']
@@ -72,39 +73,34 @@ class master_inventory(models.Model):
         #f.compute_quantity(vals_list.get('product_id'))
         return res
     
-    def get_recordset(self, pids):
-        rset = self.env.ref(pids,['zadara_inventory.master_inventory'])
-        return rset                 
+   # def get_recordset(self, pids):
+   #     rset = self.env.ref(pids,['zadara_inventory.master_inventory'])
+    #    return rset                 
     
-    def return_tq(self,p_id):
-        tot = 0
-        for x in self: 
-            if x.product_id.id == p_id:
-                #raise UserError(p_id)         
-                tot = tot + x.quantity 
-        return tot
+  #  def return_tq(self,p_id):
+  #      tot = 0
+  #      for x in self: 
+    #        if x.product_id.id == p_id:
+   #             #raise UserError(p_id)         
+  #              tot = tot + x.quantity 
+  #      return tot
     
-    def return_tq_wl(self,p_id,l_id):
-        tot = 0
+  #  def return_tq_wl(self,p_id,l_id):
+   #     tot = 0
         
-        for x in self: 
+  #      for x in self: 
             #raise UserError(l_id)   
-            if x.product_id.id == p_id and x.location_id.id == l_id:
+    #        if x.product_id.id == p_id and x.location_id.id == l_id:
                     
-                tot = tot + x.quantity 
+   #             tot = tot + x.quantity 
                 
-        return tot
+   #     return tot
                          
     def write(self,vals_list):
         x = self
-        d = 1
-        if vals_list.get('date_'):
-            d = vals_list['date_']
-            del vals_list['date_']
         #raise UserError(vals_list.get('location_id'))
-        res = super(master_inventory, self).write(vals_list)
-        if not d == 1:
-            vals_list['date_'] = d
+        res = super(m_inv_copy, self).write(vals_list)
+        
        # if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
         #    self.write({'location_id.id': vals_list.get('location_id')})
 

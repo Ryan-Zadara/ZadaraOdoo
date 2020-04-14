@@ -18,6 +18,7 @@
             <field name="transfer_date"/>
         <field name="serial_number"/>
              <field name="t_quantity" string="Quantity"/>
+             <field name="p_tag"/>
         </tree>
       </field>
     </record>

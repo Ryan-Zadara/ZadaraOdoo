@@ -20,7 +20,8 @@
               action='productqview_action_server' sequence='21'/>
                 <menuitem name="Product Number" id="zadara_inventory.menu_2_2" parent="zadara_inventory.menu_2"
               action='zadara_inventory_product_number' sequence='22'/>
-
+            <menuitem name="P_tag" id="zadara_inventory.menu_2_3" parent="zadara_inventory.menu_2"
+              action="zadara_inventory_p_tag" groups="zadara_inventory.group_user" sequence='23'/>
 
       
             <menuitem name="Locations" id="zadara_inventory.menu_3" parent="zadara_inventory.menu_root"  sequence='30'/>
@@ -40,6 +41,8 @@
           <menuitem name="Transfers" id="zadara_inventory.menu_4_2" parent="zadara_inventory.menu_4"
               action="transfer_action_window" sequence='42'/>
           
+      
+      
       <menuitem name="Quick Inventory Report" id="zadara_inventory.menu_5_1" parent="zadara_inventory.menu_5"
               action="launch_session_" sequence='51'/>  
  
@@ -50,12 +53,17 @@
       <menuitem name="Move History" id="zadara_inventory.menu_5_3" parent="zadara_inventory.menu_5"
               action="zadara_inventory_product_history" groups="zadara_inventory.group_user" sequence='53'/>
        
+      
+      
+      
+      
+      
+      
     <menuitem name="admin stuff" id="zadara_inventory.menu_6" parent="zadara_inventory.menu_root"
          groups="zadara_inventory.group_manager" sequence='60'/>
             <menuitem name="MI Mass Update" id="zadara_inventory.menu_6_1" parent="zadara_inventory.menu_6"
               action="zadara_inventory_mi_mass_update" groups="zadara_inventory.group_manager" sequence='61'/>
-            <menuitem name="P_tag" id="zadara_inventory.menu_6_2" parent="zadara_inventory.menu_6"
-              action="zadara_inventory_p_tag" groups="zadara_inventory.group_manager" sequence='62'/>
+
             <menuitem name="min_inv" id="zadara_inventory.menu_6_3" parent="zadara_inventory.menu_6"
               action="zadara_inventory_min_inventory" groups="zadara_inventory.group_manager" sequence='63'/>
   <menuitem name="min_inv_manager" id="zadara_inventory.menu_6_4" parent="zadara_inventory.menu_6"

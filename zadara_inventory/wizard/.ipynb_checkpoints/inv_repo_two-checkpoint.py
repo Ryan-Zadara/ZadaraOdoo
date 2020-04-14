@@ -5,8 +5,8 @@ from datetime import datetime
 from odoo.exceptions import ValidationError , UserError
 
 
-class inv_report_calc(models.TransientModel):
-    _name = 'zadara_inventory.inv_report_calc'
+class inv_repo_two(models.TransientModel):
+    _name = 'zadara_inventory.inv_repo_two'
     _description = 'Stock Quantity History'
     
     inv_at_date = fields.Datetime(default=lambda self: fields.datetime.now())
@@ -21,30 +21,46 @@ class inv_report_calc(models.TransientModel):
     def calc_at_date(self):
         #if self.locations == None:
             #location_id = self.env['zadara_inventory.product_history'].get.context('product_history')
-        
-        products = self.env['zadara_inventory.product'].search([])
-        all = self.env['zadara_inventory.product_history']
+        self.env['zadara_inventory.m_inv_copy'].reset_copy()
+     #   products = self.env['zadara_inventory.product'].search([])
+        all = self.env['zadara_inventory.m_inv_copy']
        # for_search  = self.env['zadara_inventory.product_history'].search([])
         mi_t = self.env['zadara_inventory.master_inventory'].search([])
-        mi_ph =  self.env['zadara_inventory.product_history'].search([])
-        temp = self.env['zadara_inventory.product_history']#.search((['date_','<=', self.inv_at_date]), order='date_desc')
-       
+        #mi_ph =  self.env['zadara_inventory.product_history'].search([])
+      #  temp = self.env['zadara_inventory.product_history']#.search((['date_','<=', self.inv_at_date]), order='date_desc')
+        qu_t = self.env['zadara_inventory.update_quantity']
+        t_t = self.env['zadara_inventory.transfer']
         r = 0
         
         for x in mi_t:
-            updates = self.env['zadara_inventory.product_history'].search((['date_','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number],['location_id.id','=',x.location_id.id]),order="date_ desc", limit=2)
-            if len(updates) > 1:
-                if updates[0].date_ == updates[1].date_:
-                    if updates[0].id > updates[1].id:
-                        updates = updates[0]
-                    else:
-                        updates = updates[1]
-                elif updates[0].date_ > updates[1].date_:
-                    updates = updates[0]
+            
+            
+            
+            updates = self.env['zadara_inventory.transfer'].search((['transfer_date','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number]),order="transfer_date desc", limit=1)
+            if not updates:
+                updates = self.env['zadara_inventory.update_quantity'].search((['update_date','<=', self.inv_at_date],['product_id.id','=',x.product_id.id],['serial_number','=',x.serial_number]),order="update_date desc", limit=1)
+            if updates:
+                self.product_id = x.product_id.id
+                self.serial_number = x.serial_number
+                self.quantity = x.quantity
+                self.report_q_mi = updates.t_quantity
+                self.location_id = updates.location_id.id
+                self.product_number = x.product_number.id
+                #raise UserError(updates)
+                if not updates.p_tag == None:
+                    self.p_tag = updates.p_tag.id
+                    r = r + 1
+                    #all = all | temp
                 else:
-                    updates = updates[1]
-            r = r + 1
-            all = all | updates
+                    self.p_tag = x.p_tag.id
+                dic = [{'product_id':self.product_id,'p_tag':self.p_tag,'location_id':self. location_id,'serial_number':self.serial_number,'quantity':self.quantity,'product_number':self.product_number,'report_q_mi':self.report_q_mi}]
+                self.env['zadara_inventory.m_inv_copy'].create(dic)
+              #  l = self.env['zadara_inventory.m_inv_copy'].search([])
+              #  raise UserError(l)
+        for x in self.env['zadara_inventory.m_inv_copy'].search([]):
+          #  raise UserError(x)
+            all = all | x
+                  #  raise UserError(all)
        # raise UserError(r)
         #raise UserError(all)
     
@@ -81,26 +97,31 @@ class inv_report_calc(models.TransientModel):
                 #updates = self.env['zadara_inventory.product_history'].search((['date_','<=', self.inv_at_date],['mi_id.product_id','=',x.id],['location_id','=',self.location_id.id]),order="date_ asc", limit=1)
                 
         #        all = updates | all 
-        z = all.search([],order="product_id asc")
-        unt = all
-        h = self.env['zadara_inventory.master_inventory']
-        for x in z:     
+        
+        
+        
+        
+        
+   #     z = all.search([],order="product_id asc")
+   #     unt = all
+     #   h = self.env['zadara_inventory.master_inventory']
+    #    for x in z:     
            # raise UserError(x.product_id.id)
-            if h.product_id.id == x.product_id.id and h.location_id.id == x.location_id.id and x.serial_number != 'N/A':
-                if self.by_product:
+        #    if h.product_id.id == x.product_id.id and h.location_id.id == x.location_id.id and x.serial_number != 'N/A':
+         #       if self.by_product:
                     #raise UserError(x)
-                    all = all - x 
-                else:
-                    x.t_quantity = h.t_quantity
-                    h = x 
+           #         all = all - x 
+          #      else:
+           #   #      x.report_q_mi = h.report_q_mi
+          #          h = x 
                     
-            else:    
-                count = unt.ph_return_tq_wl(x.product_id.id,x.location_id.id)
+           # else:    
+                #count = unt.return_tq_wl(x.product_id.id,x.location_id.id)
             
                 #raise UserError(count)
             
-                x.t_quantity = count
-                h = x        
+                #x.report_q_mi = count
+               # h = x        
                 
                 
 
@@ -153,7 +174,7 @@ class inv_report_calc(models.TransientModel):
             #'views': [(tree_view_id, 'tree'), (form_view_id, 'form')],
             'view_mode': 'tree',
             'name': 'Products',
-            'res_model': 'zadara_inventory.product_history',
+            'res_model': 'zadara_inventory.m_inv_copy',
 
             'domain': [['id','in',all.ids]],
         }

@@ -78,6 +78,9 @@ class update_quantity(models.Model):
     @api.model_create_multi
     def create(self,vals_list):
         for val in vals_list:
+            if not val.get('update_date'):
+                val['update_date'] = datetime.now()
+           # raise UserError(val.get('update_date'))
             val['t_quantity'] = val.get('quantity')
             if not val.get('product_id'):
                 raise UserError("no product")

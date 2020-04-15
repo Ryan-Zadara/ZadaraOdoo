@@ -3,9 +3,7 @@
     <!-- explicit list view definition -->
 
     <record model="ir.ui.view" id="update_quantity_list">
-
       <field name="name">Quantity Add</field>
-
       <field name="model">zadara_inventory.update_quantity</field>
       <field name="arch" type="xml">
         <tree>
@@ -26,9 +24,7 @@
       
       
                 <record model="ir.ui.view" id="update_qunantity_form_list">
-
       <field name="name">Quantity Add</field>
-
       <field name="model">zadara_inventory.update_quantity</field>
       <field name="arch" type="xml">
         <form>
@@ -107,7 +103,7 @@
     <!-- actions opening views on models -->
 
     <record model="ir.actions.act_window" id="update_quantity_action_window">
-      <field name="name">Update Qunatity</field>
+      <field name="name">Update Quantity</field>
       <field name="res_model">zadara_inventory.update_quantity</field>
       <field name="view_mode">tree,form</field>
     </record>

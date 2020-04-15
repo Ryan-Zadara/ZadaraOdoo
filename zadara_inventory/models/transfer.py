@@ -261,7 +261,7 @@ class transfer(models.Model):
         new_addition = x.env['zadara_inventory.master_inventory'].create(vals_list)
       #  if vals_list.get('p_tag'):
        #     del vals_list['p_tag']
-        vals_list.update({'date_':self.transfer_date})
+       # vals_list.update({'date_':self.transfer_date})
         self.env['zadara_inventory.product_history'].create(vals_list)
         
     

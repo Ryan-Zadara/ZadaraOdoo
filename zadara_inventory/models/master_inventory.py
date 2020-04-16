@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError , UserError
+from datetime import datetime
 
 class master_inventory(models.Model):
     _name = 'zadara_inventory.master_inventory'
@@ -35,6 +36,8 @@ class master_inventory(models.Model):
  
     report_q_mi = fields.Integer(string="Total Quantity of item in Master Inventory", help="this field is only for reporting")
     
+    purchase_date = fields.Date()
+    po_number = fields.Char()
    
     #@api.depends('product_id')
    # def set_name(self):

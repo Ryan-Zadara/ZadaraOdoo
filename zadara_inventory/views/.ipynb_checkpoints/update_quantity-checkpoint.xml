@@ -42,6 +42,8 @@
                 <field name="responsible_party" string="Responsible Party"/>
             <field name="update_date" string="Date"/>
                  <field name="p_tag"/>
+                  <field name="purchase_date"/>
+                    <field name="po_number" string="PO Number"/>
                 </group>
           
                

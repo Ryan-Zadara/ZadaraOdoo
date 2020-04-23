@@ -168,10 +168,12 @@ class update_quantity(models.Model):
         mi.write(vals_list)
         if vals_list.get('product_number'):
             del vals_list['product_number']
+
         
         del vals_list['purchase_date']
         
         del vals_list['po_number']
+
         self.env['zadara_inventory.product_history'].create(vals_list)
         return 
     

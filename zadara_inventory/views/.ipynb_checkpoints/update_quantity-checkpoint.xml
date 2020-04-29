@@ -44,6 +44,8 @@
                  <field name="p_tag"/>
                   <field name="purchase_date"/>
                     <field name="po_number" string="PO Number"/>
+                      <field name="purchased_from" string="Purchased From"/>
+                      <field name="notes" string="notes"/>
                 </group>
           
                

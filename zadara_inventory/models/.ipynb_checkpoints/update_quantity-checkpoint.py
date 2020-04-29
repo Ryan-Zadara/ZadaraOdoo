@@ -30,10 +30,11 @@ class update_quantity(models.Model):
      #   return datetime.now()datetime.strptime(Date, '%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d %H:%M')
     update_tag = fields.Char(readonly=True)
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
-
+    notes = fields.Char()
     t_quantity = fields.Integer(readonly=True)
     purchase_date = fields.Date()
     po_number = fields.Char()
+    purchased_from = fields.Many2one('zadara_inventory.vendors')
     #moveline = fields.Many2many('zadara_inventory.mlqu')
     #@api.depends('update_date')
     #def comp_qn(self):
@@ -123,6 +124,8 @@ class update_quantity(models.Model):
           
         res = super(update_quantity, self).create(vals_list)
         for vals in vals_list:
+            if vals.get('notes'):
+                del vals["notes"]
             if vals.get('t_quantity'):
                 del vals["t_quantity"]
             if vals.get('update_quantity_name'):
@@ -155,6 +158,8 @@ class update_quantity(models.Model):
             del vals_list['purchase_date']
         if vals_list.get('po_number'):
             del vals_list['po_number']
+        if vals_list.get('purchased_from'):
+            del vals_list['purchased_from']
         self.env['zadara_inventory.product_history'].create(vals_list)
 
     def write_to_mi(self,vals_list):
@@ -168,7 +173,8 @@ class update_quantity(models.Model):
         mi.write(vals_list)
         if vals_list.get('product_number'):
             del vals_list['product_number']
-
+        if vals_list.get('purchased_from'):
+            del vals_list['purchased_from']
         
         del vals_list['purchase_date']
         

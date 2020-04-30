@@ -160,6 +160,10 @@ class update_quantity(models.Model):
             del vals_list['po_number']
         if vals_list.get('purchased_from'):
             del vals_list['purchased_from']
+
+        if vals_list.get('notes'):
+            del vals_list['notes']
+
         self.env['zadara_inventory.product_history'].create(vals_list)
 
     def write_to_mi(self,vals_list):
@@ -175,7 +179,10 @@ class update_quantity(models.Model):
             del vals_list['product_number']
         if vals_list.get('purchased_from'):
             del vals_list['purchased_from']
-        
+
+        if vals_list.get('notes'):
+            del vals_list['notes']
+
         del vals_list['purchase_date']
         
         del vals_list['po_number']

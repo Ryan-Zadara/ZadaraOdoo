@@ -124,8 +124,8 @@ class update_quantity(models.Model):
           
         res = super(update_quantity, self).create(vals_list)
         for vals in vals_list:
-            if vals.get('notes'):
-                del vals["notes"]
+            
+            del vals["notes"]
             if vals.get('t_quantity'):
                 del vals["t_quantity"]
             if vals.get('update_quantity_name'):
@@ -154,15 +154,15 @@ class update_quantity(models.Model):
         new_addition = self.env['zadara_inventory.master_inventory'].create(vals_list)
         if vals_list.get('product_number'):
             del vals_list['product_number']
-        if vals_list.get('purchase_date'):
-            del vals_list['purchase_date']
-        if vals_list.get('po_number'):
-            del vals_list['po_number']
-        if vals_list.get('purchased_from'):
-            del vals_list['purchased_from']
+        
+        del vals_list['purchase_date']
+        
+        del vals_list['po_number']
+        
+        del vals_list['purchased_from']
 
-        if vals_list.get('notes'):
-            del vals_list['notes']
+        
+    
 
         self.env['zadara_inventory.product_history'].create(vals_list)
 
@@ -177,11 +177,11 @@ class update_quantity(models.Model):
         mi.write(vals_list)
         if vals_list.get('product_number'):
             del vals_list['product_number']
-        if vals_list.get('purchased_from'):
-            del vals_list['purchased_from']
+       
+        del vals_list['purchased_from']
 
-        if vals_list.get('notes'):
-            del vals_list['notes']
+      
+        
 
         del vals_list['purchase_date']
         

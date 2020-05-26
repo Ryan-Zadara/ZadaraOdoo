@@ -23,7 +23,7 @@ class transfer(models.Model):
     
     location_id  = fields.Many2one('zadara_inventory.locations', readonly=True)
    
-    product_id = fields.Many2one('zadara_inventory.product',required=True)
+    product_id = fields.Many2one('zadara_inventory.product')
     
     product_name = fields.Char(related="product_id.product_name")
     
@@ -80,7 +80,14 @@ class transfer(models.Model):
 
            #if val.get("p_tag") == False:
             #    del val['p_tag']
-
+            if val.get('product_id') == False or val.get('product_id') == None:
+                temp28 = self.env['zadara_inventory.master_inventory'].search([['serial_number','=',val.get('serial_number')]]).product_id.id
+                if not temp28:
+                    raise UserError("serial number not found")
+                else:
+                    val['product_id'] = temp28
+            #raise UserError(val['product_id'])
+                
             if val.get('source_location_id') == val.get("destination_location_id"):
                 raise UserError("source and destination location must be different")
             if not val.get('transfer_date'):
@@ -106,7 +113,7 @@ class transfer(models.Model):
                    # val['transfer_source_quant'] = 0 
                     #do stuff here
                 else:
-                    #raise UserError(val.get("destination_location_id"))
+                    #raise UserError(val.get('product_id'))
                     raise UserError("bad no product found")
             else:
 

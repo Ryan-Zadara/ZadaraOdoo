@@ -35,6 +35,7 @@ class update_quantity(models.Model):
     purchase_date = fields.Date()
     po_number = fields.Char()
     purchased_from = fields.Many2one('zadara_inventory.vendors')
+    product_notes = fields.Char()
     #moveline = fields.Many2many('zadara_inventory.mlqu')
     #@api.depends('update_date')
     #def comp_qn(self):
@@ -161,6 +162,9 @@ class update_quantity(models.Model):
         
         del vals_list['purchased_from']
 
+
+        del vals_list['product_notes']
+
         
     
 
@@ -186,6 +190,7 @@ class update_quantity(models.Model):
         del vals_list['purchase_date']
         
         del vals_list['po_number']
+        del vals_list['product_notes']
 
         self.env['zadara_inventory.product_history'].create(vals_list)
         return 

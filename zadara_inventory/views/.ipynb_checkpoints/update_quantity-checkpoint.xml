@@ -29,26 +29,27 @@
       <field name="arch" type="xml">
         <form>
             <group colspan='2'>
-        
-            <group colspan='1' col='1'>
-                     <field name="location_id" string="Location"/>
-                     <field name="product_id" string="Product Name"/>
+                <group colspan='1' col='1'>
+                    <field name="location_id" string="Location"/>
+                    <field name="product_id" string="Product Name"/>
                     <field name="product_number" string="Product Number"/>
-
                     <field name="serial_number" string="Serial Number"/>
                 </group>
                 <group colspan='1' col='1'>       
-                <field name="quantity" string="Quantity"/>
-                <field name="responsible_party" string="Responsible Party"/>
-            <field name="update_date" string="Date"/>
-                 <field name="p_tag"/>
-                  <field name="purchase_date"/>
-                    <field name="po_number" string="PO Number"/>
-                      <field name="purchased_from" string="Purchased From"/>
-                      <field name="notes" string="notes"/>
+                    <field name="quantity" string="Quantity"/>
+                    <field name="responsible_party" string="Responsible Party"/>
+                    <field name="update_date" string="Date"/>
+                    <field name="p_tag"/>
+                    <field name="product_notes"/>
                 </group>
-          
-               
+            <group colspan='1' col='2'>
+                </group>
+                <group colspan='1' col='2'>
+                    <field name="purchase_date"/>
+                    <field name="po_number" string="PO Number"/>
+                    <field name="purchased_from" string="Purchased From"/>
+                    <field name="notes" string="notes"/>                
+                </group>
             </group>
         </form>
       </field>

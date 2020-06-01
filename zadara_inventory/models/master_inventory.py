@@ -39,6 +39,7 @@ class master_inventory(models.Model):
     purchase_date = fields.Date()
     po_number = fields.Char()
     purchased_from = fields.Many2one('zadara_inventory.vendors')
+    product_notes = fields.Char()
 
     #@api.depends('product_id')
    # def set_name(self):

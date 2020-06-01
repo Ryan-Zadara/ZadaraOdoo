@@ -162,7 +162,9 @@ class update_quantity(models.Model):
         
         del vals_list['purchased_from']
 
+
         del vals_list['product_notes']
+
         
     
 

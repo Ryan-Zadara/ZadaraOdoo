@@ -19,6 +19,7 @@
         <field name="serial_number"/>
              <field name="t_quantity" string="Quantity"/>
              <field name="p_tag"/>
+            
         </tree>
       </field>
     </record>
@@ -50,6 +51,7 @@
                  </group>
                   <group colspan='1' col='2'>
                    <field name="transfer_type" string="Transfer Type"/>
+                       <field name="availabilityType" string="Availability"/>
                        </group>
                 <group colspan='2' col='2'>
             <field name="move_info" string='Notes'/>

@@ -40,6 +40,8 @@
               action="update_quantity_action_window" sequence='41'/>
           <menuitem name="Transfers" id="zadara_inventory.menu_4_2" parent="zadara_inventory.menu_4"
               action="transfer_action_window" sequence='42'/>
+               <menuitem name="Availability" id="zadara_inventory.menu_4_3" parent="zadara_inventory.menu_4"
+              action="zadara_inventory_availability" sequence='43'/>
           
       
       

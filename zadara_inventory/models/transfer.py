@@ -42,6 +42,7 @@ class transfer(models.Model):
     transfer_source_flag = fields.Char(readonly=True)
     transfer_source_quant = fields.Integer()
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
+    availabilityType = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
 
     #p_tag = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete')])
    
@@ -96,7 +97,9 @@ class transfer(models.Model):
           #  raise UserError(val.get('transfer_date'))
             track = self.env['zadara_inventory.product'].search([['id','=',val.get("product_id")],['product_trackSerialNumber','=',True]])
             
-            if track:            
+            if track:   
+                
+
                 #q = val.get('quantity')
                 #if not q:
                 #    raise UserError('bad sn line')
@@ -115,6 +118,9 @@ class transfer(models.Model):
                 else:
                     #raise UserError(val.get('product_id'))
                     raise UserError("bad no product found")
+   
+                if val.get('availabilityType') == False: 
+                    val['availabilityType'] = self.env['zadara_inventory.master_inventory'].search([['serial_number', '=', val.get('serial_number')]]).availabilityType
             else:
 
                 if val.get('serial_number') != 'N/A':
@@ -216,10 +222,11 @@ class transfer(models.Model):
        
         #raise UserError(mi.product_id)
         del vals_list['source_location_id']#if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
+        
         mi.write(vals_list)
         ##if vals_list.get('p_tag'):
          #   del vals_list['p_tag']
-       
+        del vals_list['availabilityType']
         
         self.env['zadara_inventory.product_history'].recurcreate(vals_list)
         #else:
@@ -235,8 +242,10 @@ class transfer(models.Model):
         sn = vals_list.get('serial_number')
         mi = self.env['zadara_inventory.master_inventory'].search([['product_id', '=', x], ['serial_number', '=', sn],['location_id','=',vals_list.get('source_location_id')]], limit=1)
         mi.location_id = vals_list.get('location_id')
+       # mi.availabilityType = vals_list.get('availabilityType')
         #raise UserError(mi.product_id)
         del vals_list['source_location_id']#if self.env['zadara_inventory.product'].search([['id','=',vals_list.get("product_id")],['product_trackSerialNumber','=',True]]):
+        
         mi.write(vals_list)
        # raise UserError("hi")
         #if vals_list.get('p_tag'):
@@ -244,7 +253,7 @@ class transfer(models.Model):
        
        # raise UserError(vals_list.get('date_'))
             
-       
+        del vals_list['availabilityType']
         #raise UserError(self.transfer_date)
        # raise UserError(val.get('transfer_date'))
        # raise UserError(vals_list.get('date_'))

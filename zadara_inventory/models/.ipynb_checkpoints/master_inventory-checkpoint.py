@@ -17,8 +17,8 @@ class master_inventory(models.Model):
     product_id = fields.Many2one('zadara_inventory.product', string="1-Product")
 
     #product_name = fields.Char(compute="set_name",store=True)
-
     
+    availabilityType = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
 
     
     location_id = fields.Many2one('zadara_inventory.locations')                             
@@ -39,6 +39,7 @@ class master_inventory(models.Model):
     purchase_date = fields.Date()
     po_number = fields.Char()
     purchased_from = fields.Many2one('zadara_inventory.vendors')
+    product_notes = fields.Char()
 
     #@api.depends('product_id')
    # def set_name(self):

@@ -27,6 +27,7 @@
          <field name="report_q_mi" invisible='1'/>
              
                      <field name="product_number"/>
+              <field name="availabilityType"/>
         </tree>    
       </field>
     </record>
@@ -41,7 +42,7 @@
                 <field name="product_id"/>
                 <field name="location_id"/>
                 <field name="serial_number"/>
-                <field name="quantity"/>
+                <field name="availabilityType"/>
                               
 
               <templates>

@@ -17,8 +17,8 @@ class master_inventory(models.Model):
     product_id = fields.Many2one('zadara_inventory.product', string="1-Product")
 
     #product_name = fields.Char(compute="set_name",store=True)
-
     
+    availabilityType = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
 
     
     location_id = fields.Many2one('zadara_inventory.locations')                             

@@ -1,0 +1,36 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="availability_list">
+      <field name="name">Availability list</field>
+      <field name="model">zadara_inventory.availability</field>
+      <field name="arch" type="xml">
+        <tree>
+         
+        <field name="serial_number"/>
+            <field name="availabilityType"/>
+            <field name="p_tag"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="zadara_inventory_availability">
+      <field name="name">Availability</field>
+      <field name="res_model">zadara_inventory.availability</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+   
+
+    <!-- Top menu item -->
+
+   
+  </data>
+</odoo>

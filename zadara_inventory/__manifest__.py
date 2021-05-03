@@ -50,6 +50,7 @@
         'views/transfer.xml',
         'views/menus.xml',
         'views/templates.xml',
+        'views/availability.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

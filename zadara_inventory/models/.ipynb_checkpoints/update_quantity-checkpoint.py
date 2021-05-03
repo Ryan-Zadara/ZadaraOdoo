@@ -36,6 +36,7 @@ class update_quantity(models.Model):
     po_number = fields.Char()
     purchased_from = fields.Many2one('zadara_inventory.vendors')
     product_notes = fields.Char()
+    availabilityType = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
     #moveline = fields.Many2many('zadara_inventory.mlqu')
     #@api.depends('update_date')
     #def comp_qn(self):
@@ -125,7 +126,6 @@ class update_quantity(models.Model):
           
         res = super(update_quantity, self).create(vals_list)
         for vals in vals_list:
-            
             del vals["notes"]
             if vals.get('t_quantity'):
                 del vals["t_quantity"]
@@ -140,6 +140,7 @@ class update_quantity(models.Model):
                 del vals['update_tag']
                 self.create_to_mi(vals)
             else:
+                del vals["availabilityType"]
                 del vals['update_tag']
                 self.write_to_mi(vals)
         
@@ -164,7 +165,7 @@ class update_quantity(models.Model):
 
 
         del vals_list['product_notes']
-
+        del vals_list["availabilityType"]
         
     
 

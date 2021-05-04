@@ -48,8 +48,10 @@
         'wizard/q_mi.xml',
         'views/update_quantity.xml',
         'views/transfer.xml',
+        'views/availability.xml',
         'views/menus.xml',
         'views/templates.xml',
+        
     ],
     # only loaded in demonstration mode
     'demo': [

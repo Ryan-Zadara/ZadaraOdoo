@@ -32,7 +32,7 @@
       
 
     <menuitem name="Moves" id="zadara_inventory.menu_4" parent="zadara_inventory.menu_root" action="zadara_inventory_moves" sequence='40'/>
-         <menuitem name="Reports" id="zadara_inventory.menu_5" parent="zadara_inventory.menu_root" groups="zadara_inventory.group_user" sequence='50' />
+    
 
     <!-- actions -->
 
@@ -40,9 +40,10 @@
               action="update_quantity_action_window" sequence='41'/>
           <menuitem name="Transfers" id="zadara_inventory.menu_4_2" parent="zadara_inventory.menu_4"
               action="transfer_action_window" sequence='42'/>
-          
+                    <menuitem name="Availability" id="zadara_inventory.menu_4_3" parent="zadara_inventory.menu_4"
+              action="zadara_inventory_availability" sequence='43'/>
       
-      
+           <menuitem name="Reports" id="zadara_inventory.menu_5" parent="zadara_inventory.menu_root" groups="zadara_inventory.group_user" sequence='50' />
       <menuitem name="Quick Inventory Report" id="zadara_inventory.menu_5_1" parent="zadara_inventory.menu_5"
               action="launch_session_" sequence='51'/>  
  

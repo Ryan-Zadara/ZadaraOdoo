@@ -40,7 +40,7 @@ class master_inventory(models.Model):
     po_number = fields.Char()
     purchased_from = fields.Many2one('zadara_inventory.vendors')
     product_notes = fields.Char()
-
+    availability_Type = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
     #@api.depends('product_id')
    # def set_name(self):
      #   self.product_name = self.product_id.name

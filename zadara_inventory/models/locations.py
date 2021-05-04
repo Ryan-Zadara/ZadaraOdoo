@@ -19,3 +19,13 @@ class locations(models.Model):
                     raise UserError("Location Already on file")
         res = super(locations, self).create(vals_list)
         return res
+    
+ 
+    def write(self,vals_list):
+        for x in self.env['zadara_inventory.locations'].search([]):
+            if x.name == vals_list.get('name'):
+                    
+                raise UserError("Location Already on file")
+        res = super(locations, self).write(vals_list)
+        #res = super(locations, self).write(vals_list)
+        return res

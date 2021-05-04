@@ -42,7 +42,7 @@ class transfer(models.Model):
     transfer_source_flag = fields.Char(readonly=True)
     transfer_source_quant = fields.Integer()
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
-
+    availability_Type = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
     #p_tag = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete')])
    
     #check valid, location_id, product_id 
@@ -115,6 +115,8 @@ class transfer(models.Model):
                 else:
                     #raise UserError(val.get('product_id'))
                     raise UserError("bad no product found")
+                if val.get('availability_Type') == False: 
+                    val['availability_Type'] = self.env['zadara_inventory.master_inventory'].search([['serial_number', '=', val.get('serial_number')]]).availability_Type
             else:
 
                 if val.get('serial_number') != 'N/A':
@@ -220,7 +222,7 @@ class transfer(models.Model):
         ##if vals_list.get('p_tag'):
          #   del vals_list['p_tag']
        
-        
+        del vals_list['availability_Type']
         self.env['zadara_inventory.product_history'].recurcreate(vals_list)
         #else:
           #  mi.search([['product_id.id', '=', x], ['serial_number', '=', sn],['location_id.id','=',vals_list.get('location_id')]])
@@ -244,7 +246,7 @@ class transfer(models.Model):
        
        # raise UserError(vals_list.get('date_'))
             
-       
+        del vals_list['availability_Type']
         #raise UserError(self.transfer_date)
        # raise UserError(val.get('transfer_date'))
        # raise UserError(vals_list.get('date_'))

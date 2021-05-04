@@ -35,11 +35,12 @@ class availability(models.Model):
             #if not self.env['zadara_inventory.p_tag'].search([['name','=',val.get('p_tag')]]) and val.get('p_tag') != None:
             #    raise UserError("P_Tag Not Found")
             
-            if val.get('availability_Type') == False: 
+            if not val.get('availability_Type'): 
                  val['availability_Type'] = mi.availability_Type
-
-            if val.get('p_tag') == False:
+            
+            if not val.get('p_tag'):
                 val['p_tag'] = mi.p_tag.id
+               # raise UserError(val['p_tag'])
             mi.p_tag = val.get('p_tag')
             mi.availability_Type = val.get('availability_Type')
 

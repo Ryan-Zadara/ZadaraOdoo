@@ -271,6 +271,7 @@ class transfer(models.Model):
       #  if vals_list.get('p_tag'):
        #     del vals_list['p_tag']
        # vals_list.update({'date_':self.transfer_date})
+        del vals_list['availability_Type']
         self.env['zadara_inventory.product_history'].create(vals_list)
         
     

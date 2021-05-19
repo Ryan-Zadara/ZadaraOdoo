@@ -22,6 +22,8 @@ class availability(models.Model):
     
     p_tag = fields.Many2one('zadara_inventory.p_tag', required = False)
     
+    notes = fields.Char(string="Notes", required=False)
+    
     available_date = fields.Datetime(default=lambda self: fields.datetime.now())
 
     

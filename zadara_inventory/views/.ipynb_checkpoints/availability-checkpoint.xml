@@ -10,6 +10,7 @@
           <field name="serial_number"/>
           <field name="availability_Type"/>
           <field name="p_tag"/>
+        <field name="notes"/>
         </tree>
       </field>
     </record>

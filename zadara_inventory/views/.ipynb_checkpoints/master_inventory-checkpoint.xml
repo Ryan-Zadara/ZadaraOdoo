@@ -29,6 +29,7 @@
                      <field name="product_number"/>
         
               <field name="p_tag"/> 
+              <field name="product_notes"/> 
               <field name="availability_Type" string="Availability"/>
         </tree>    
       </field>
@@ -60,6 +61,7 @@
                 <field name="quantity" string="Quantity"/>
                 <field name="availability_Type" string="Availability"/>
                 <field name="p_tag"/>
+                <field name="product_notes"/> 
             </group>
             </group>
         </form>

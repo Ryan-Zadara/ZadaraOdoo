@@ -10,7 +10,7 @@ class p_tag(models.Model):
 
     name = fields.Char(compute="p_tag_makename",store=True)
     #('BrokenNoWarranty','BrokenNoWarranty')
-    p_tag_type = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete'),('RMA','RMA'),('Broken No Warranty','Broken No Warranty'),('Suspected Issues','Suspected Issues'),('Bad','Bad')])
+    p_tag_type = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete'),('RMA','RMA'),('Broken No Warranty','Broken No Warranty'),('Suspected Issues','Suspected Issues'),('Bad','Bad'),('Sample','Sample')])
 
     p_tag_desc = fields.Char(string="RMA Number")
 
@@ -24,8 +24,8 @@ class p_tag(models.Model):
     @api.model_create_multi
     def create(self,vals_list):
         for x in vals_list:
-            if x.get('p_tag_type') == 'RMA' and x.get('p_tag_desc') == False:
-                raise UserError("If product tag type is RMA the RMA number must be included")
+            #if x.get('p_tag_type') == 'RMA' and x.get('p_tag_desc') == False:
+            #    raise UserError("If product tag type is RMA the RMA number must be included")
             #for t in 
             if self.env['zadara_inventory.p_tag'].search([['name','=',x.get('name')]]):
                 raise UserError("Product Tag already made")

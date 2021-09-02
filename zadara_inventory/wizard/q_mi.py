@@ -14,35 +14,36 @@ class q_mi(models.TransientModel):
  
     by_product = fields.Boolean()
 
-    
-   # @api.onchange('at_date')
-    #def chng_b(self):
-     #   if self.at_date == :
-      #      self.bool_at_date = True
-       # else:
-           # raise UserError(datetime.today())
-        #    self.bool_at_date = False
-    
 
         
     
     def qmi(self): 
         mi_t = self.env['zadara_inventory.master_inventory'].search([])
-        #products = self.env['zadara_inventory.product'].search([])
-        #temp_all = self.env['zadara_inventory.product']
-       # start_date = self.at_date.strftime('%Y-%m-%d')
-       # end_date = self.bool_at_date.strftime('%Y-%m-%d')
-       # for x in mi_t:
+
+        all = mi_t#self.env['zadara_inventory.master_inventory'].search(['product_id', '=', "neverfind"])
+        for x in all:
+            all = all -x 
+            #how do make empty object
             
-        all = self.env['zadara_inventory.master_inventory']
         
-        all = mi_t
         
-        unt = all
+        
+        loc_t = self.env['zadara_inventory.locations'].search([])
+        pro = self.env['zadara_inventory.product'].search([])
+        if self.by_product:
+            for y in pro:
+                for x in loc_t:
+                  
+                    if self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', x.id]]):
+                        temp = self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', x.id]])
+                        for i in temp:
+                            all = all + i
+                            break
+        
+        '''
         #if self.by_location:
         h = self.env['zadara_inventory.master_inventory']
         for x in all:     
-           # raise UserError(x.product_id.id)
             if h.product_id.id == x.product_id.id and h.location_id.id == x.location_id.id and x.serial_number != 'N/A':
                 if self.by_product:
                     all = all - x 
@@ -52,18 +53,11 @@ class q_mi(models.TransientModel):
                     
             else:    
                 count = unt.return_tq_wl(x.product_id.id,x.location_id.id)
-            
-                #raise UserError(count)
-            
                 x.report_q_mi = count
                 h = x
-        #raise UserError(all)
-              
-            #temp3 = self.env['zadara_inventory.product_history']
         if self.by_product:
-            temp2 = all #self.env['zadara_inventory.product_history'].search(['ids','in',all.ids])
-                #self.env['zadara_inventory.product_history'].browse(all)
-                #temp2 = 
+            temp2 = all 
+
             temp = all
 
             for x in temp2: 
@@ -75,52 +69,8 @@ class q_mi(models.TransientModel):
                         if x.id != y.id and y.id > x.id:
                             all = all - y
         
-        
-    # else:
-        #    mi_t = self.env['zadara_inventory.product_history'].search(['date_','<=', self.at_date],order="date_ desc", limit=1)
-         #   if self.location_id:
-          #      for p in products: 
-           #         p.total_quantity = mi_t.ph_return_tq_wl(p.id,self.location_id)
-           # else:
-            #    for p in products: 
-             #       p.total_quantity = mi_t.ph_return_tq(p.id)
-            
-           # raise UserError(p.total_quantity)
-            
-            #for x in products:
-            #    count = 0
-            #    x = 0
-            #    r = self.env['zadara_inventory.product'].browse(x)
-               
-            #    for r.id in mi_t:
-            #        if x == y.id:
-            #            
-            #            if x == 0:
-                           # all = all | y
-                            
-            #            x = 1
-            #            count = count  + x.quantity
-                
-            #    r.total_quantity = count
-                        
-                        
-                    
+        '''
 
-                    
-     #   else:
-      #      if not self.location_id:
-       ##            y.total_quantity = 0 
-         #           t = self.env['zadara_inventory.master_inventory'].search(['product_id','=',y],['location_id','=',location_id])
-          #          eas = 0
-           #         for x in t:
-            #            ease = ease + x.quantity 
-             #       all = all | t
-                #updates = self.env['zadara_inventory.product_history'].search((['date_','<=', self.inv_at_date],['mi_id.product_id','=',x.id],['location_id','=',self.location_id.id]),order="date_ asc", limit=1)
-               
-          
-
-        
-   
         
         action = {
             'type': 'ir.actions.act_window',

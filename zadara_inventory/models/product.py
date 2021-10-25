@@ -13,7 +13,7 @@ class product(models.Model):
     #product_id = fields.Char()
     part_number = fields.One2many('zadara_inventory.product_number', 'product_id')
 
-    product_category = fields.Selection([('Drive','Drive'), ('Cable','Cable'), ('Transceiver','Transceiver'),('Tray','Tray'),('Server','Server'),('Switch','Switch'),('Firewall','Firewall'),('Card','Card'),('CPU','CPU'),('Router','Router'),('Adapter','Adapter')])
+    product_category = fields.Selection([('Drive','Drive'), ('Cable','Cable'), ('Transceiver','Transceiver'),('Tray','Tray'),('Server','Server'),('Switch','Switch'),('Firewall','Firewall'),('Card','Card'),('CPU','CPU'),('Router','Router'),('Adapter','Adapter'),('PSU','PSU'),('DIMM','DIMM')])
 
     
     mi_product = fields.One2many('zadara_inventory.master_inventory', 'product_id')

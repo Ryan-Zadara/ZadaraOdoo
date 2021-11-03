@@ -14,7 +14,9 @@ class q_mi(models.TransientModel):
  
     by_product = fields.Boolean()
 
+
     location_to = fields.Many2one('zadara_inventory.locations')
+
         
     
     def qmi(self): 
@@ -62,6 +64,7 @@ class q_mi(models.TransientModel):
         
         
         
+
         
         '''
         #if self.by_location:

@@ -15,6 +15,8 @@ class q_mi(models.TransientModel):
     by_product = fields.Boolean()
 
 
+    location_to = fields.Many2one('zadara_inventory.locations')
+
         
     
     def qmi(self): 
@@ -22,23 +24,47 @@ class q_mi(models.TransientModel):
 
         all = mi_t#self.env['zadara_inventory.master_inventory'].search(['product_id', '=', "neverfind"])
         for x in all:
-            all = all -x 
+            all = all - x 
             #how do make empty object
+            
+        
+        #all = self.env['zadara_inventory.master_inventory'].search([['location_id', '=', location_id.id]])
+        #pro = self.env['zadara_inventory.product'].search([])
+        #for x in pro: 
             
         
         
         
+       
         loc_t = self.env['zadara_inventory.locations'].search([])
         pro = self.env['zadara_inventory.product'].search([])
         if self.by_product:
             for y in pro:
-                for x in loc_t:
-                  
-                    if self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', x.id]]):
-                        temp = self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', x.id]])
-                        for i in temp:
-                            all = all + i
-                            break
+              
+                if y.product_trackSerialNumber == True:
+                    temp = self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', self.location_to.id]])
+                    for x in temp:
+                        x.report_q_mi = len(temp)
+                    for i in temp:
+                        all = all + i
+                        break
+                else:
+                    temp = self.env['zadara_inventory.master_inventory'].search([['product_id', '=', y.id], ['location_id', '=', self.location_to.id]])
+                    for x in temp:
+                        x.report_q_mi = temp.quantity
+                    for i in temp:
+                        all = all + i
+                        break
+
+        
+        
+        
+        
+        
+        
+        
+        
+
         
         '''
         #if self.by_location:

@@ -62,6 +62,7 @@
                 <field name="availability_Type" string="Availability"/>
                 <field name="p_tag"/>
                 <field name="product_notes"/> 
+                <field name="country_of_origin"/> 
             </group>
             </group>
         </form>

@@ -19,7 +19,7 @@ class master_inventory(models.Model):
     #product_name = fields.Char(compute="set_name",store=True)
 
     
-
+    country_of_origin = fields.Char()
     
     location_id = fields.Many2one('zadara_inventory.locations')                             
     

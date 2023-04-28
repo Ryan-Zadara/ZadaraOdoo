@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_number_inventory_admin,access_product_number_inventory_admin,model_product_number,stock.group_stock_manager,1,1,1,1
+access_product_number_inventory_user,access_product_number_inventory_user,model_product_number,stock.group_stock_user,1,0,0,0
+access_product_number_internal_user,access_product_number_internal_user,model_product_number,base.group_user,1,0,0,0
+access_product_number_admin_setting,access_product_number_admin_setting,model_product_number,base.group_system,1,1,1,1

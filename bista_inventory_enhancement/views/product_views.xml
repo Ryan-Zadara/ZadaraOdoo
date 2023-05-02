@@ -57,6 +57,7 @@
                         <label for="partner_id" string="Contact" style="font-weight:bold;" attrs="{'invisible': [('picking_code', 'in', ['incoming', 'outgoing'])]}"/>
                     </div>
                     <field name="partner_id" nolabel="1"/>
+                    <field name="picking_code" invisible="1"/>
                 </xpath>
             </field>
         </record>

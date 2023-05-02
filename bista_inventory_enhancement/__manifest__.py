@@ -23,7 +23,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/product_views.xml',
-        'views/product_number_views.xml'
+        'views/product_number_views.xml',
+        'views/partner_views.xml',
     ],
     'application': True,
     'installable': True,

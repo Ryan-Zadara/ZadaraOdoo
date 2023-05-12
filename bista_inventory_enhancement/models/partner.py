@@ -6,6 +6,12 @@
 #
 ##############################################################################
 
-from . import product
-from . import stock_move_line
-from . import partner
+from odoo import models, fields, api
+
+
+class ResPartner(models.Model):
+    _inherit = 'res.partner'
+
+    is_a_customer = fields.Boolean(string='Is Customer?')
+    is_a_vendor = fields.Boolean(string='Is Vendor?')
+

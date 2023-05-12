@@ -6,8 +6,8 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
-                 <field name="default_code" position="after">
-                     <field name="vendor_id"/>
+                 <field name="categ_id" position="after">
+                     <field name="sub_categ_id"/>
                  </field>
                 <xpath expr="//page[@name='variants']" position="after">
                     <page name="partnumber" string="Part Number">
@@ -28,7 +28,7 @@
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
                  <field name="default_code" position="after">
-                     <field name="vendor_id" optional="Hide"/>
+                     <field name="sub_categ_id" />
                  </field>
 
             </field>
@@ -61,5 +61,47 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="product_subcategory_form_view" model="ir.ui.view">
+            <field name="name">Product SubCategory</field>
+            <field name="model">product.subcategory</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Product SubCategory">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="product_subcategory_tree_view" model="ir.ui.view">
+            <field name="name">Product SubCategory</field>
+            <field name="model">product.subcategory</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Product SubCategory">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_product_subcategory" model="ir.actions.act_window">
+            <field name="name">Product Subcategory</field>
+            <field name="res_model">product.subcategory</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            name="Product Subcategories"
+            id="product_subcategory_menu"
+            sequence="10"
+            parent="stock.menu_product_in_config_stock"
+            action="action_product_subcategory"
+        />
     </data>
 </odoo>

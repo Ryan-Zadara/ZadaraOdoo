@@ -16,6 +16,7 @@ class ProductTemplate(models.Model):
     part_number_ids = fields.One2many('product.number', 'product_id', string="Part Number")
     # vendor_id = fields.Many2one('res.partner', string="Vendor")
     sub_categ_id = fields.Many2one('product.subcategory', string='Sub Category')
+    m_code = fields.Char(string='Manufacturer Product Code')
 
 
 class ProductNumber(models.Model):

@@ -6,17 +6,24 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_only_form_view"/>
             <field name="arch" type="xml">
-                 <field name="categ_id" position="after">
+                <field name="default_code" position="attributes">
+                    <attribute name="string">Zadara Product Code</attribute>
+                </field>
+                <field name="default_code" position="after">
+                    <field name="m_code" />
+                </field>
+                <field name="categ_id" position="after">
                      <field name="sub_categ_id"/>
                  </field>
+
                 <xpath expr="//page[@name='variants']" position="after">
                     <page name="partnumber" string="Part Number">
-                      <field name="part_number_ids">
-                          <tree>
-                              <field name="product_id"/>
-                              <field name="name"/>
-                          </tree>
-                      </field>
+                        <field name="part_number_ids">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                            </tree>
+                        </field>
                     </page>
                 </xpath>
             </field>
@@ -27,10 +34,35 @@
             <field name="model">product.template</field>
             <field name="inherit_id" ref="product.product_template_tree_view"/>
             <field name="arch" type="xml">
-                 <field name="default_code" position="after">
-                     <field name="sub_categ_id" />
+                <field name="default_code" position="attributes">
+                    <attribute name="string">Zadara Product Code</attribute>
                  </field>
+                <field name="default_code" position="after">
+                    <field name="m_code" />
+                    <field name="sub_categ_id" />
+                 </field>
+            </field>
+        </record>
 
+        <record id="inherit_product_product_form_view_enhancement" model="ir.ui.view">
+            <field name="name">product.product.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="attributes">
+                    <attribute name="string">Zadara Product Code</attribute>
+                 </field>
+            </field>
+        </record>
+
+        <record id="inherit_product_variant_tree_view_enhancement" model="ir.ui.view">
+            <field name="name">product.product.tree.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="attributes">
+                    <attribute name="string">Zadara Product Code</attribute>
+                 </field>
             </field>
         </record>
 

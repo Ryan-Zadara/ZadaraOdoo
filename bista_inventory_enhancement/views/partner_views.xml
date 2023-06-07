@@ -12,5 +12,21 @@
                  </xpath>
             </field>
         </record>
+
+        <record id="inherit_res_partner_search_view_enhancement" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                 <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="is_a_customer"/>
+                    <field name="is_a_vendor"/>
+                 </xpath>
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <filter string="Customer" name="type_customer" domain="[('is_a_customer', '=', True)]"/>
+                    <filter string="Vendor" name="type_vendor" domain="[('is_a_vendor', '=', True)]"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </odoo>

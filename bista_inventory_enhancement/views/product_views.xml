@@ -44,6 +44,19 @@
             </field>
         </record>
 
+        <record id="inherit_product_template_search_filter" model="ir.ui.view">
+            <field name="name">product.template.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='categ_id']" position="after">
+                    <field name="sub_categ_id" string="Sub Category" />
+                    <field name="m_code" string="Manufacturer Product Code" />
+                </xpath>
+            </field>
+        </record>
+
+
         <record id="inherit_product_product_form_view_enhancement" model="ir.ui.view">
             <field name="name">product.product.form.inherit</field>
             <field name="model">product.product</field>

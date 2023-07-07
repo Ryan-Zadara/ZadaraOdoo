@@ -11,6 +11,7 @@
                 </field>
                 <field name="default_code" position="after">
                     <field name="m_code" />
+                    <field name="m_product_name"/>
                 </field>
                 <field name="categ_id" position="after">
                      <field name="sub_categ_id"/>
@@ -39,6 +40,7 @@
                  </field>
                 <field name="default_code" position="after">
                     <field name="m_code" />
+                    <field name="m_product_name"/>
                     <field name="sub_categ_id" />
                  </field>
             </field>
@@ -52,6 +54,7 @@
                 <xpath expr="//field[@name='categ_id']" position="after">
                     <field name="sub_categ_id" string="Sub Category" />
                     <field name="m_code" string="Manufacturer Product Code" />
+                    <field name="m_product_name" string="Manufacturer p/n"/>
                 </xpath>
             </field>
         </record>

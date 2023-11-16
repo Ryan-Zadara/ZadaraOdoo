@@ -6,32 +6,21 @@
       <field name="name">Master Inventory</field>
       <field name="model">zadara_inventory.master_inventory</field>
       <field name="arch" type="xml">
-          
-         
-                      
-      
-
           <tree string="mi_tree"  create='false'>
-
-          <!-- <button name="launch_session_wizard" type="object"
-                string="Subscribe" class="btn-primary"/>-->
-    
-            <field name="product_id"/>
-             <field name="quantity"/>
+<!--              <button name="launch_session_wizard" type="object" string="Subscribe" class="btn-primary"/>-->
+              <field name="product_id"/>
+              <field name="quantity"/>
             <!--  <field name="product_name"/>-->
-            
-          <field name="serial_number"/>
-          <field name="location_id"/> 
-              <field name="location_id_type" invisible='1'/> 
-           
-         <field name="report_q_mi" invisible='1'/>
-             
-                     <field name="product_number"/>
-        
-              <field name="p_tag"/> 
+              <field name="serial_number"/>
+              <field name="location_id"/>
+              <field name="salesforce_order"/>
+              <field name="location_id_type" invisible='1'/>
+              <field name="report_q_mi" invisible='1'/>
+              <field name="product_number"/>
+              <field name="p_tag"/>
               <field name="product_notes"/> 
               <field name="availability_Type" string="Availability"/>
-        </tree>    
+        </tree>
       </field>
     </record>
 

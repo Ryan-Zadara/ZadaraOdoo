@@ -21,8 +21,8 @@ class product_history(models.Model):
     quantity = fields.Integer()
     date_ = fields.Datetime(default=lambda self: fields.datetime.now())
     t_quantity = fields.Integer()
-    
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
+    salesforce_order = fields.Char(string="Salesforce Order")
     
     def if_date(self,date,test_date):
         if date <= test_date:

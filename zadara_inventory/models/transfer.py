@@ -43,6 +43,7 @@ class transfer(models.Model):
     transfer_source_quant = fields.Integer()
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
     availability_Type = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
+    salesforce_order = fields.Char(string="Salesforce Order")
     #p_tag = fields.Selection([('New','New'), ('Used','Used'),('Obsolete','Obsolete')])
    
     #check valid, location_id, product_id 

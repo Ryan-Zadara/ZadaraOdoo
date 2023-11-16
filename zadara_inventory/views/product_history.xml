@@ -1,35 +1,27 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-
-      
-    <record model="ir.ui.view" id="product_history_list">
-      <field name="name">Product History</field>
-      <field name="model">zadara_inventory.product_history</field>
-      <field name="arch" type="xml">
-
-       <tree  >
-
-           
-            <field name="mi_id" invisible='1'/>
-           <field name="product_id"/>
-           <field name="serial_number"/>
-           <field name="date_"/>
-           <field name="location_id"/>
-           <field name="quantity" />
-            <field name="t_quantity" string="Total Quantity" />
-            <field name="p_tag" string="Product Tag"/>
+      <record model="ir.ui.view" id="product_history_list">
+          <field name="name">Product History</field>
+          <field name="model">zadara_inventory.product_history</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="mi_id" invisible='1'/>
+                  <field name="product_id"/>
+                  <field name="serial_number"/>
+                  <field name="date_"/>
+                  <field name="location_id"/>
+                  <field name="salesforce_order"/>
+                  <field name="quantity" />
+                  <field name="t_quantity" string="Total Quantity" />
+                  <field name="p_tag" string="Product Tag"/>
         <!--
            <button name="launch_session_wizard" type="object"
                 string="Subscribe"/>
-               -->         
-      
-         
-          
-        
-          </tree>
-      </field>
-    </record>
+               -->
+              </tree>
+          </field>
+      </record>
       <!--
     <record model="ir.ui.view" id="product_history_form">
       <field name="name">product_histy list</field>
@@ -54,13 +46,12 @@
     -->
 
     <!-- actions opening views on models-->
-
-    <record model="ir.actions.act_window" id="zadara_inventory_product_history">
-      <field name="name">Product History</field>
-      <field name="res_model">zadara_inventory.product_history</field>
-      <field name="view_mode">tree,form</field> 
-    <field name="view_id" ref="product_history_list"/>
-    </record>
+      <record model="ir.actions.act_window" id="zadara_inventory_product_history">
+          <field name="name">Product History</field>
+          <field name="res_model">zadara_inventory.product_history</field>
+          <field name="view_mode">tree,form</field>
+          <field name="view_id" ref="product_history_list"/>
+      </record>
         
 
     

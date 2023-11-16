@@ -8,17 +8,17 @@
       <field name="model">zadara_inventory.transfer</field>
       <field name="arch" type="xml">
         <tree>
-        
-                     <field name="source_location_id"/>
-                     <field name="destination_location_id"/>
-          <field name="location_id"/>
+            <field name="source_location_id"/>
+            <field name="destination_location_id"/>
+            <field name="location_id"/>
             <field name='trackingpo_number'/>
-            <field name="move_info"  string='Notes'/>        
-          <field name="product_name"/>
+            <field name="move_info"  string='Notes'/>
+            <field name="salesforce_order"/>
+            <field name="product_name"/>
             <field name="transfer_date"/>
-        <field name="serial_number"/>
-             <field name="t_quantity" string="Quantity"/>
-             <field name="p_tag"/>
+            <field name="serial_number"/>
+            <field name="t_quantity" string="Quantity"/>
+            <field name="p_tag"/>
         </tree>
       </field>
     </record>
@@ -30,32 +30,30 @@
       <field name="arch" type="xml">
         <form>
             <group colspan='2'>
-         
-            <group colspan='1' col='1'>
-                <field name="product_id" string="Product Name"/>
-                <field name="source_location_id" string="Source Location"/>
-                <field name="destination_location_id" string="Destination Location"/>
-            </group>
-          
-            <field name="location_id" invisible='1'/>
-            <group colspan='1' col='1'>        
-          
-        <field name="serial_number" string="Serial Number"/>
-             <field name="quantity" string="Quantity"/>
-            <field name="transfer_date" string="Date of Transfer"/>
-            </group>
-            <group colspan='1' col='2'>
-                <field name="responsible_party" string="Responsible Party"/>
-                  <field name="p_tag"/>
-                <field name="availability_Type" string="Availability"/>
-                 </group>
-                  <group colspan='1' col='2'>
-                   <field name="transfer_type" string="Transfer Type"/>
-                       </group>
-                <group colspan='2' col='2'>
-            <field name="move_info" string='Notes'/>
-            <field name='trackingpo_number'/>
-            </group>
+                <group colspan='1' col='1'>
+                    <field name="product_id" string="Product Name"/>
+                    <field name="source_location_id" string="Source Location"/>
+                    <field name="destination_location_id" string="Destination Location"/>
+                </group>
+                <field name="location_id" invisible='1'/>
+                <group colspan='1' col='1'>
+                    <field name="serial_number" string="Serial Number"/>
+                    <field name="quantity" string="Quantity"/>
+                    <field name="transfer_date" string="Date of Transfer"/>
+                </group>
+                <group colspan='1' col='2'>
+                    <field name="responsible_party" string="Responsible Party"/>
+                    <field name="p_tag"/>
+                    <field name="availability_Type" string="Availability"/>
+                </group>
+                <group colspan='1' col='2'>
+                    <field name="transfer_type" string="Transfer Type"/>
+               </group>
+               <group colspan='2' col='2'>
+                   <field name="move_info" string='Notes'/>
+                   <field name='trackingpo_number'/>
+                   <field name="salesforce_order"/>
+               </group>
             </group>
         </form>
       </field>

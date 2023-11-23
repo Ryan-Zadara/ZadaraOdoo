@@ -27,6 +27,7 @@
                           <field name="product_id" string="Product Name"/>
                           <field name="product_number" string="Product Number"/>
                           <field name="serial_number" string="Serial Number"/>
+                          <field name="bill_ref_no"/>
                       </group>
                       <group colspan='1' col='1'>
                           <field name="quantity" string="Quantity"/>

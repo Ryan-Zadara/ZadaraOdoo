@@ -1,83 +1,57 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+<record model="ir.ui.view" id="update_quantity_list">
+          <field name="name">Quantity Add</field>
+          <field name="model">zadara_inventory.update_quantity</field>
+          <field name="arch" type="xml">
+              <tree>
+                  <field name="location_id"/>
+                  <field name="product_name"/>
+                  <field name="p_tag"/>
+                  <field name="update_date" string="date"/>
+                  <field name="serial_number"/>
+                  <field name="quantity" string="Quantity"/>
+                  <field name="bill_ref_no"/>
+              </tree>
+          </field>
+      </record>
+      <record model="ir.ui.view" id="update_qunantity_form_list">
+          <field name="name">Quantity Add</field>
+          <field name="model">zadara_inventory.update_quantity</field>
+          <field name="arch" type="xml">
+              <form>
+                  <group colspan='2'>
+                      <group colspan='1' col='1'>
+                          <field name="location_id" string="Location"/>
+                          <field name="product_id" string="Product Name"/>
+                          <field name="product_number" string="Product Number"/>
+                          <field name="serial_number" string="Serial Number"/>
+                          <field name="bill_ref_no"/>
+                      </group>
+                      <group colspan='1' col='1'>
+                          <field name="quantity" string="Quantity"/>
+                          <field name="responsible_party" string="Responsible Party"/>
+                          <field name="update_date" string="Date"/>
+                          <field name="p_tag"/>
+                          <field name="availability_Type" string="Availability"/>
+                          <field name="product_notes"/>
+                      </group>
+                      <group colspan='1' col='2'>
 
-    <record model="ir.ui.view" id="update_quantity_list">
-      <field name="name">Quantity Add</field>
-      <field name="model">zadara_inventory.update_quantity</field>
-      <field name="arch" type="xml">
-        <tree>
-          
-          <field name="location_id"/>
-          <field name="product_name"/>
-              <field name="p_tag"/>
-            <field name="update_date" string="date"/>
-            <field name="serial_number"/>
-            <field name="quantity" string="Quantity"/>
-         
-        </tree>           
-      </field>
-    </record>
-     
-      
- 
-      
-      
-                <record model="ir.ui.view" id="update_qunantity_form_list">
-      <field name="name">Quantity Add</field>
-      <field name="model">zadara_inventory.update_quantity</field>
-      <field name="arch" type="xml">
-        <form>
-            <group colspan='2'>
-                <group colspan='1' col='1'>
-                    <field name="location_id" string="Location"/>
-                    <field name="product_id" string="Product Name"/>
-                    <field name="product_number" string="Product Number"/>
-                    <field name="serial_number" string="Serial Number"/>
-                </group>
-                <group colspan='1' col='1'>       
-                    <field name="quantity" string="Quantity"/>
-                    <field name="responsible_party" string="Responsible Party"/>
-                    <field name="update_date" string="Date"/>
-                    <field name="p_tag"/>
-                    <field name="availability_Type" string="Availability"/>
-                    <field name="product_notes"/>
-                </group>
-            <group colspan='1' col='2'>
-                </group>
-                <group colspan='1' col='2'>
-                    <field name="purchase_date"/>
-                    <field name="po_number" string="PO Number"/>
-                    <field name="purchased_from" string="Purchased From"/>
-                    <field name="notes" string="notes"/>     
-                    <field name="country_of_origin"/> 
-                </group>
-            </group>
-        </form>
-      </field>
-    </record>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+                      </group>
+                      <group colspan='1' col='2'>
+                          <field name="purchase_date"/>
+                          <field name="po_number" string="PO Number"/>
+                          <field name="purchased_from" string="Purchased From"/>
+                          <field name="notes" string="notes"/>
+                          <field name="country_of_origin"/>
+                      </group>
+                  </group>
+              </form>
+          </field>
+      </record>
+
       <!--
     <record model="ir.ui.view" id="update_quantity_form">
       <field name="name">product list</field>
@@ -114,16 +88,7 @@
       <field name="res_model">zadara_inventory.update_quantity</field>
       <field name="view_mode">tree,form</field>
     </record>
-
-
-
     <!-- server action to the one above -->
-
-   
-
     <!-- Top menu item -->
-
-   
-
   </data>
 </odoo>

@@ -23,6 +23,8 @@ class product_history(models.Model):
     t_quantity = fields.Integer()
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
     salesforce_order = fields.Char(string="Salesforce Order")
+    bill_ref_no = fields.Char(string='Bill Reference Number')
+
     
     def if_date(self,date,test_date):
         if date <= test_date:
@@ -78,6 +80,7 @@ class product_history(models.Model):
             raise UserError('bad date')
         #raise UserError(vals_list.get('date_'))
         vals_list.update({'mi_id':mi})
+        # vals_list.update({'bill_ref_no':mi.bill_ref_no})
         res = super(product_history, self).create(vals_list)
         return res
         

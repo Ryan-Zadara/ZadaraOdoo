@@ -42,6 +42,7 @@ class master_inventory(models.Model):
     product_notes = fields.Char()
     availability_Type = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
     salesforce_order = fields.Char(string="Salesforce Order")
+    bill_ref_no = fields.Char(string='Bill Reference Number')
     #@api.depends('product_id')
    # def set_name(self):
      #   self.product_name = self.product_id.name

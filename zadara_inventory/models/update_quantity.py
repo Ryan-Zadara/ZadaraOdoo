@@ -40,6 +40,7 @@ class update_quantity(models.Model):
     country_of_origin = fields.Char()
     
     availability_Type = fields.Selection([('Available','Available'), ('Unavailable','Unavailable')], required=False)
+    bill_ref_no = fields.Char(string='Bill Reference Number')
     #moveline = fields.Many2many('zadara_inventory.mlqu')
     #@api.depends('update_date')
     #def comp_qn(self):
@@ -112,7 +113,7 @@ class update_quantity(models.Model):
                     raise UserError('bad sns')                
                 if self.env['zadara_inventory.master_inventory'].search([['serial_number', '=', val.get('serial_number')]]):
                     raise UserError("cannot have 2 same serial numbers ")
-                else:        
+                else:
                     val['update_tag'] = 'create'
             else:
                 val['serial_number'] = "N/A"

@@ -23,6 +23,7 @@ class product_history(models.Model):
     t_quantity = fields.Integer()
     p_tag = fields.Many2one('zadara_inventory.p_tag', string="Product Tag")
     salesforce_order = fields.Char(string="Salesforce Order")
+    bill_ref_no = fields.Char(string='Bill Reference Number')
 
     def if_date(self,date,test_date):
         if date <= test_date:

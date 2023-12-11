@@ -12,6 +12,7 @@
                   <field name="date_"/>
                   <field name="location_id"/>
                   <field name="salesforce_order"/>
+                  <field name="bill_ref_no"/>
                   <field name="quantity" />
                   <field name="t_quantity" string="Total Quantity" />
                   <field name="p_tag" string="Product Tag"/>

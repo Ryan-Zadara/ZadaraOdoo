@@ -113,7 +113,7 @@ class update_quantity(models.Model):
                     raise UserError('bad sns')                
                 if self.env['zadara_inventory.master_inventory'].search([['serial_number', '=', val.get('serial_number')]]):
                     raise UserError("cannot have 2 same serial numbers ")
-                else:        
+                else:
                     val['update_tag'] = 'create'
             else:
                 val['serial_number'] = "N/A"
